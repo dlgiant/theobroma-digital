@@ -1,20 +1,15 @@
 'use client';
 
 import { useTranslations, useLocale } from 'next-intl';
-import { useRouter, usePathname } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useState, useTransition } from 'react';
 
-interface LanguageToggleProps {
-  isCollapsed?: boolean;
-}
-
-export default function LanguageToggle({ isCollapsed = false }: LanguageToggleProps) {
+export default function LanguageToggle() {
   const t = useTranslations('language');
   const locale = useLocale();
-  const router = useRouter();
   const pathname = usePathname();
   const [showDropdown, setShowDropdown] = useState(false);
-  const [isPending, startTransition] = useTransition();
+  const [isPending] = useTransition();
 
   const languages = [
     { code: 'pt-BR', label: t('portuguese'), flag: '🇧🇷' },

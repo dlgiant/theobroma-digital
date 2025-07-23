@@ -1,14 +1,12 @@
-import { type Locale } from './i18n/request';
-
 declare global {
   interface IntlMessages {
-    metadata: any;
-    navigation: any;
-    theme: any;
-    language: any;
-    home: any;
-    dashboard: any;
-    common: any;
+    metadata: Record<string, string>;
+    navigation: Record<string, string>;
+    theme: Record<string, string>;
+    language: Record<string, string>;
+    home: Record<string, string | Record<string, string>>;
+    dashboard: Record<string, string | Record<string, string>>;
+    common: Record<string, string>;
   }
 }
 
