@@ -46,7 +46,8 @@ jobs:
     name: Build Application
     runs-on: ubuntu-latest
     needs: test
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
+    # Build artifacts for all branches (including feature branches for QA)
+    if: needs.test.result == 'success'
     
     outputs:
       deployment-matrix: ${{ steps.export-deployment-matrix.outputs.deployment-matrix }}
@@ -98,7 +99,8 @@ jobs:
     name: Deploy to ${{ matrix.environment}}
     runs-on: ubuntu-latest
     needs: build
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
+    # Deploy all successful builds (feature branches get staging environment)
+    if: needs.build.result == 'success'
     
     strategy:
       matrix: ${{ fromJSON(needs.build.outputs.deployment-matrix) }}
