@@ -89,11 +89,28 @@ jobs:
       - name: Export deployment matrix
         id: export-deployment-matrix
         run: |
+          echo "Current branch: ${{ github.ref }}"
           if [ "${{ github.ref }}" = "refs/heads/main" ]; then
-            echo "deployment-matrix={\"include\":[{\"environment\":\"production\",\"url\":\"${{ secrets.PRODUCTION_URL }}\"}]}" >> $GITHUB_OUTPUT
+            MATRIX='{"include":[{"environment":"production","url":"https://d3p343dcol9cwr.cloudfront.net"}]}'
+            echo "Setting production matrix: $MATRIX"
+            echo "deployment-matrix=$MATRIX" >> $GITHUB_OUTPUT
           else
-            echo "deployment-matrix={\"include\":[{\"environment\":\"staging\",\"url\":\"${{ secrets.STAGING_URL }}\"}]}" >> $GITHUB_OUTPUT
+            MATRIX='{"include":[{"environment":"staging","url":"https://d3p343dcol9cwr.cloudfront.net"}]}'
+            echo "Setting staging matrix: $MATRIX"
+            echo "deployment-matrix=$MATRIX" >> $GITHUB_OUTPUT
           fi
+          echo "Matrix output set successfully"
+          
+      - name: Validate deployment matrix
+        run: |
+          echo "Validating deployment matrix output..."
+          MATRIX_OUTPUT="${{ steps.export-deployment-matrix.outputs.deployment-matrix }}"
+          echo "Matrix output: $MATRIX_OUTPUT"
+          if [ -z "$MATRIX_OUTPUT" ]; then
+            echo "ERROR: Deployment matrix is empty!"
+            exit 1
+          fi
+          echo "Matrix validation passed"
 
   deploy:
     name: Deploy to ${{ matrix.environment}}
