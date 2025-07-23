@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 interface SvgIconProps {
   name: string;
   className?: string;
@@ -8,7 +10,7 @@ interface SvgIconProps {
 
 export default function SvgIcon({ name, className = "", size = 24 }: SvgIconProps) {
   return (
-    <img
+    <Image
       src={`/icons/${name}.svg`}
       alt={name}
       width={size}

@@ -376,10 +376,7 @@ export default function TreeMapVisualization({ chartType }: TreeMapVisualization
   const minLng = Math.min(...allLongitudes);
   const maxLng = Math.max(...allLongitudes);
 
-  // Add padding to bounds
-  const latRange = maxLat - minLat;
-  const lngRange = maxLng - minLng;
-  const padding = 0.1; // 10% padding
+  // Bounds calculated for coordinate normalization
 
   // Helper function to get lot color
   const getLotColor = (lotId: number): string => {
@@ -463,26 +460,6 @@ ${t('tooltip.currentValue')}: ${chartType === 'security' ? tree.securityEvents :
     setTooltip(prev => ({ ...prev, visible: false }));
   };
 
-  const handleTrailMouseEnter = (event: React.MouseEvent, trail: TrailPoint) => {
-    const rect = svgContainerRef.current?.getBoundingClientRect();
-    if (rect) {
-      const lotInfo = trail.lot_id ? `\n${t('tooltip.lot')}: ${trail.lot_id}` : '';
-      const content = `${t('tooltip.trailPoint')}: ${trail.id}${lotInfo}
-${t('tooltip.coordinates')}: ${trail.latitude.toFixed(6)}, ${trail.longitude.toFixed(6)}
-${t('tooltip.type')}: ${trail.trailType}
-${t('tooltip.surface')}: ${trail.surface}
-${t('tooltip.width')}: ${trail.width.toFixed(1)}m
-${t('tooltip.difficulty')}: ${trail.difficulty}`;
-      
-      setTooltip({
-        visible: true,
-        x: event.clientX - rect.left,
-        y: event.clientY - rect.top,
-        content,
-        type: 'trail'
-      });
-    }
-  };
 
   return (
     <div ref={containerRef}>
@@ -536,7 +513,7 @@ ${t('tooltip.difficulty')}: ${trail.difficulty}`;
               {networkData.lots.map(lot => (
                 <button
                   key={lot.lot_id}
-                  onClick={(e) => {
+                  onClick={() => {
                     // Check for modifier keys (Shift or Ctrl/Cmd)
 selectOnlyLot(lot.lot_id);
                   }}

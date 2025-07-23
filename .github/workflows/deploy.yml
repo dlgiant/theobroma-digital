@@ -2,7 +2,7 @@ name: Deploy Theobroma Digital
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main, develop, actions-new ]
   pull_request:
     branches: [ main ]
 
@@ -23,25 +23,31 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
+          cache: 'yarn'
 
       - name: Install dependencies
-        run: npm ci
+        run: yarn install --frozen-lockfile
 
       - name: Run linting
-        run: npm run lint
+        run: yarn lint
 
       - name: Run type checking
         run: npx tsc --noEmit
 
+      - name: Create mock data file
+        run: |
+          mkdir -p public
+          echo '{"metadata":{"total_trees":0,"total_trail_points":0,"total_connections":0},"trees":[],"trail_points":[],"connections":[]}' > public/plantation-data.json
+
       - name: Check build
-        run: npm run build
+        run: yarn build
 
   build:
     name: Build Application
     runs-on: ubuntu-latest
     needs: test
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
+    # Build artifacts for all branches (including feature branches for QA)
+    if: needs.test.result == 'success'
     
     outputs:
       deployment-matrix: ${{ steps.export-deployment-matrix.outputs.deployment-matrix }}
@@ -54,14 +60,20 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
+          cache: 'yarn'
 
       - name: Install dependencies
-        run: npm ci
+        run: yarn install --frozen-lockfile
+
+      - name: Create mock data file
+        run: |
+          mkdir -p public
+          echo '{"metadata":{"total_trees":0,"total_trail_points":0,"total_connections":0},"trees":[],"trail_points":[],"connections":[]}' > public/plantation-data.json
 
       - name: Build application
-        run: npm run build
+        run: yarn build
         env:
+          BUILD_STATIC: 'true'
           API_BASE_URL: ${{ secrets.API_BASE_URL }}
 
       - name: Upload build artifacts
@@ -69,8 +81,7 @@ jobs:
         with:
           name: build-files
           path: |
-            .next/
-            public/
+            out/
             package.json
             next.config.ts
           retention-days: 1
@@ -78,17 +89,35 @@ jobs:
       - name: Export deployment matrix
         id: export-deployment-matrix
         run: |
+          echo "Current branch: ${{ github.ref }}"
           if [ "${{ github.ref }}" = "refs/heads/main" ]; then
-            echo "deployment-matrix={\"include\":[{\"environment\":\"production\",\"url\":\"${{ secrets.PRODUCTION_URL }}\"}]}" >> $GITHUB_OUTPUT
+            MATRIX='{"include":[{"environment":"production","url":"https://d3p343dcol9cwr.cloudfront.net"}]}'
+            echo "Setting production matrix: $MATRIX"
+            echo "deployment-matrix=$MATRIX" >> $GITHUB_OUTPUT
           else
-            echo "deployment-matrix={\"include\":[{\"environment\":\"staging\",\"url\":\"${{ secrets.STAGING_URL }}\"}]}" >> $GITHUB_OUTPUT
+            MATRIX='{"include":[{"environment":"staging","url":"https://d3p343dcol9cwr.cloudfront.net"}]}'
+            echo "Setting staging matrix: $MATRIX"
+            echo "deployment-matrix=$MATRIX" >> $GITHUB_OUTPUT
           fi
+          echo "Matrix output set successfully"
+          
+      - name: Validate deployment matrix
+        run: |
+          echo "Validating deployment matrix output..."
+          MATRIX_OUTPUT="${{ steps.export-deployment-matrix.outputs.deployment-matrix }}"
+          echo "Matrix output: $MATRIX_OUTPUT"
+          if [ -z "$MATRIX_OUTPUT" ]; then
+            echo "ERROR: Deployment matrix is empty!"
+            exit 1
+          fi
+          echo "Matrix validation passed"
 
   deploy:
     name: Deploy to ${{ matrix.environment}}
     runs-on: ubuntu-latest
     needs: build
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
+    # Deploy all successful builds (feature branches get staging environment)
+    if: needs.build.result == 'success'
     
     strategy:
       matrix: ${{ fromJSON(needs.build.outputs.deployment-matrix) }}
@@ -105,7 +134,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
+          cache: 'yarn'
 
       - name: Download build artifacts
         uses: actions/download-artifact@v4
@@ -113,7 +142,7 @@ jobs:
           name: build-files
 
       - name: Install dependencies
-        run: npm ci --only=production
+        run: yarn install --frozen-lockfile --production=false
 
       # Docker deployment option
       - name: Set up Docker Buildx

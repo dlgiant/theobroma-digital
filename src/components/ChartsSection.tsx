@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import ChartSelector, { ChartType } from './ChartSelector';
-import ChartDisplay from './ChartDisplay';
 import TreeMapVisualization from './TreeMapVisualization';
 
 export default function ChartsSection() {

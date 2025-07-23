@@ -187,8 +187,8 @@ const Navigation: React.FC<NavigationProps> = ({ children }) => {
 
       {/* Fixed Top Right Toggles */}
       <div className="fixed top-4 right-4 z-40 flex items-center gap-2">
-        <LanguageToggle isCollapsed={false} />
-        <ThemeToggle isCollapsed={false} />
+        <LanguageToggle />
+        <ThemeToggle />
       </div>
 
       {/* Main Content Area */}
