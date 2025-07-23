@@ -1,0 +1,225 @@
+{
+  "metadata": {
+    "title": "Theobroma - Digital",
+    "description": "Inteligência do Cacau"
+  },
+  "navigation": {
+    "home": "Início",
+    "dashboard": "Painel",
+    "profile": "Perfil",
+    "settings": "Configurações",
+    "documents": "Documentos",
+    "analytics": "Análises",
+    "collapse": "Recolher",
+    "expand": "Expandir",
+    "theme": "Tema"
+  },
+  "theme": {
+    "light": "Claro",
+    "dark": "Escuro",
+    "system": "Sistema",
+    "current": "Tema atual"
+  },
+  "language": {
+    "portuguese": "Português",
+    "english": "English",
+    "current": "Idioma atual"
+  },
+  "home": {
+    "title": "Bem-vindo ao Theobroma Digital",
+    "subtitle": "Sistema inteligente de monitoramento para plantações de cacau",
+    "dataError": "Erro ao carregar dados da plantação. Verifique se o arquivo tree_coordinates_with_trails.json existe.",
+    "insights": {
+      "totalLots": "Total de Lotes",
+      "totalTrees": "Total de Árvores",
+      "totalArea": "Área Total",
+      "trailNetwork": "Pontos de Trilha",
+      "connections": "conexões",
+      "treeHealth": "Saúde das Árvores",
+      "healthyTrees": "Árvores Saudáveis",
+      "securityEvents": "Eventos de Segurança",
+      "eventRate": "Taxa de Eventos",
+      "maturityMetrics": "Métricas de Maturidade",
+      "avgMaturity": "Maturidade Média",
+      "avgTreeAge": "Idade Média das Árvores",
+      "avgDensity": "Densidade Média",
+      "years": "anos",
+      "environmentalHealth": "Saúde Ambiental",
+      "avgCanopyGrade": "Classificação Média do Dossel",
+      "avgFungalThreat": "Ameaça Fúngica Média",
+      "actionItems": "Itens de Ação",
+      "securityAlert": "Alerta de Segurança",
+      "treesNeedAttention": "árvores precisam de atenção",
+      "fungalWarning": "Aviso de Ameaça Fúngica",
+      "avgThreatLevel": "Nível médio de ameaça",
+      "harvestReady": "Pronto para Colheita",
+      "maturityRate": "Taxa de maturidade"
+    },
+    "features": {
+      "analytics": {
+        "title": "Análises do Cacau",
+        "description": "Análises avançadas e insights para sua produção e controle de qualidade do cacau."
+      },
+      "visualization": {
+        "title": "Visualização de Dados",
+        "description": "Painéis interativos para visualizar os dados da sua cadeia de suprimentos do cacau."
+      },
+      "sustainability": {
+        "title": "Sustentabilidade",
+        "description": "Acompanhe métricas de sustentabilidade e impacto ambiental das suas operações de cacau."
+      }
+    },
+    "themeDemo": {
+      "title": "Sistema de Temas",
+      "description": "Esta aplicação suporta temas claro e escuro, com detecção automática de preferência do sistema. Use o botão de tema na barra lateral de navegação para alternar entre os temas.",
+      "colors": {
+        "primary": "Primário",
+        "secondary": "Secundário", 
+        "accent": "Destaque",
+        "muted": "Sutil"
+      }
+    },
+    "status": {
+      "online": "Sistema Online",
+      "maintenance": "Manutenção",
+      "updates": "Atualizações Disponíveis",
+      "alerts": "Alertas"
+    }
+  },
+  "dashboard": {
+    "title": "Painel",
+    "subtitle": "Bem-vindo ao seu painel! Aqui você pode ver todas as suas métricas e dados importantes.",
+    "metrics": {
+      "totalUsers": "Total de Usuários",
+      "revenue": "Receita",
+      "orders": "Pedidos",
+      "conversion": "Conversão",
+      "fromLastMonth": "do mês passado"
+    },
+    "charts": {
+      "securityEvents": "Eventos de Segurança",
+      "maturityIndex": "Índice de Maturidade",
+      "fungalThreat": "Ameaça Fúngica",
+      "canopyGrading": "Classificação do Dossel",
+      "treeAge": "Idade das Árvores",
+      "treeDensity": "Densidade das Árvores",
+      "selectChart": "Selecionar gráfico",
+      "chartPlaceholder": "Espaço reservado para gráfico",
+      "securityVisualization": "Monitoramento de eventos de segurança e alertas críticos na plantação",
+      "maturityVisualization": "Análise do índice de maturidade dos frutos de cacau por região",
+      "fungalVisualization": "Detecção e monitoramento de ameaças fúngicas nas culturas",
+      "canopyVisualization": "Avaliação e classificação da cobertura do dossel florestal",
+      "treeAgeVisualization": "Distribuição das idades das árvores de cacau pela plantação",
+      "treeDensityVisualization": "Análise da densidade e distribuição de árvores por área"
+    },
+    "treeMap": {
+      "title": "Mapa de Distribuição de Árvores",
+      "description": "Visualização mostrando {chartType} em todas as localizações de árvores",
+      "securityEventsDescription": "eventos de segurança",
+      "valuesDescription": "valores de {chartType}",
+      "trails": "Trilhas",
+      "connections": "Conexões",
+      "dataDensity": "Densidade de dados",
+      "auto": "Automático",
+      "high": "Alto",
+      "low": "Baixo",
+      "selectLots": "Selecionar Lotes",
+      "deselectAll": "Desmarcar Todos",
+      "selectAll": "Selecionar Todos",
+      "lot": "Lote",
+      "showing": "Mostrando",
+      "of": "de",
+      "lotsShort": "lotes",
+      "trees": "árvores",
+      "trailPoints": "pontos de trilha",
+      "sampling": "Amostragem",
+      "hideLegend": "Ocultar legenda",
+      "showLegend": "Mostrar legenda",
+      "trailConnection": "Conexão de Trilha",
+      "trailPoint": "Ponto de Trilha",
+      "shown": "mostrado",
+      "legend": {
+        "title": "Legenda",
+        "trees": "Árvores:",
+        "trails": "Trilhas:",
+        "connections": "Conexões:",
+        "securityEvent": "Evento de Segurança",
+        "noEvents": "Sem Eventos",
+        "low": "Baixo",
+        "medium": "Médio",
+        "high": "Alto",
+        "main": "Principal",
+        "secondary": "Secundária",
+        "access": "Acesso",
+        "trailLinks": "Links de Trilha"
+      },
+      "stats": {
+        "trees": "Árvores",
+        "trailPoints": "Pontos de Trilha",
+        "connections": "Conexões",
+        "securityEvents": "Eventos de Segurança",
+        "avgValue": "Valor Médio",
+        "areaCovered": "Área Coberta"
+      },
+      "tooltip": {
+        "treeId": "ID da Árvore",
+        "trailPoint": "Ponto de Trilha",
+        "lot": "Lote",
+        "coordinates": "Coordenadas",
+        "treeMetrics": "--- Métricas da Árvore ---",
+        "maturityIndex": "Índice de Maturidade",
+        "securityEvents": "Eventos de Segurança",
+        "fungalThreat": "Ameaça Fúngica",
+        "canopyGrading": "Classificação do Dossel",
+        "treeAge": "Idade da Árvore",
+        "treeDensity": "Densidade das Árvores",
+        "currentView": "--- Visualização Atual ---",
+        "showing": "Mostrando",
+        "currentValue": "Valor Atual",
+        "type": "Tipo",
+        "surface": "Superfície",
+        "width": "Largura",
+        "difficulty": "Dificuldade",
+        "years": "anos"
+      },
+      "loading": "Carregando dados das árvores...",
+      "error": "Erro ao carregar dados das árvores",
+      "noData": "Nenhum dado de rede disponível",
+      "clickToToggle": "Clique esquerdo para selecionar apenas",
+      "shiftClickToSelectOnly": "Clique direito para alternar",
+      "rightClickToSelectOnly": "Clique para selecionar apenas"
+    },
+    "activity": {
+      "title": "Atividade Recente",
+      "newUser": "Novo usuário registrado",
+      "orderCompleted": "Pedido concluído",
+      "maintenance": "Manutenção do sistema agendada",
+      "paymentFailed": "Pagamento falhou",
+      "minutesAgo": "minutos atrás",
+      "hourAgo": "hora atrás",
+      "hoursAgo": "horas atrás",
+      "tomorrow": "Amanhã às",
+      "order": "Pedido"
+    }
+  },
+  "profile": {
+    "title": "Minha conta",
+    "subtitle": "Usuário"
+  },
+  "common": {
+    "loading": "Carregando...",
+    "error": "Erro",
+    "success": "Sucesso",
+    "warning": "Aviso",
+    "info": "Informação",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "save": "Salvar",
+    "edit": "Editar",
+    "delete": "Excluir",
+    "search": "Pesquisar",
+    "filter": "Filtrar",
+    "export": "Exportar",
+    "import": "Importar"
+  }
+}

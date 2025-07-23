@@ -1,0 +1,226 @@
+{
+  "metadata": {
+    "title": "Theobroma - Digital",
+    "description": "Cocoa Intelligence"
+  },
+  "navigation": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "settings": "Settings",
+    "documents": "Documents",
+    "analytics": "Analytics",
+    "collapse": "Collapse",
+    "expand": "Expand",
+    "theme": "Theme"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "current": "Current Theme"
+  },
+  "language": {
+    "portuguese": "Portuguese",
+    "english": "English",
+    "current": "Current Language"
+  },
+  "home": {
+    "title": "Welcome to Theobroma Digital",
+    "subtitle": "Smart monitoring system for cocoa plantations",
+    "dataError": "Error loading plantation data. Please check if the tree_coordinates_with_trails.json file exists.",
+    "insights": {
+      "totalLots": "Total Lots",
+      "totalTrees": "Total Trees",
+      "totalArea": "Total Area",
+      "trailNetwork": "Trail Points",
+      "connections": "connections",
+      "treeHealth": "Tree Health",
+      "healthyTrees": "Healthy Trees",
+      "securityEvents": "Security Events",
+      "eventRate": "Event Rate",
+      "maturityMetrics": "Maturity Metrics",
+      "avgMaturity": "Average Maturity",
+      "avgTreeAge": "Average Tree Age",
+      "avgDensity": "Average Density",
+      "years": "years",
+      "environmentalHealth": "Environmental Health",
+      "avgCanopyGrade": "Average Canopy Grade",
+      "avgFungalThreat": "Average Fungal Threat",
+      "actionItems": "Action Items",
+      "securityAlert": "Security Alert",
+      "treesNeedAttention": "trees need attention",
+      "fungalWarning": "Fungal Threat Warning",
+      "avgThreatLevel": "Average threat level",
+      "harvestReady": "Ready for Harvest",
+      "maturityRate": "Maturity rate"
+    },
+    "features": {
+      "analytics": {
+        "title": "Cocoa Analytics",
+        "description": "Advanced analytics and insights for your cocoa production and quality control."
+      },
+      "visualization": {
+        "title": "Data Visualization",
+        "description": "Interactive dashboards to visualize your cocoa supply chain data."
+      },
+      "sustainability": {
+        "title": "Sustainability",
+        "description": "Track sustainability metrics and environmental impact of your cocoa operations."
+      }
+    },
+    "themeDemo": {
+      "title": "Theme System",
+      "description": "This application supports both light and dark themes, with automatic system preference detection. Use the theme button in the navigation sidebar to switch between themes.",
+      "colors": {
+        "primary": "Primary",
+        "secondary": "Secondary", 
+        "accent": "Accent",
+        "muted": "Muted"
+      }
+    },
+    "status": {
+      "online": "System Online",
+      "maintenance": "Maintenance",
+      "updates": "Updates Available",
+      "alerts": "Alerts"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Welcome to your dashboard! Here you can see all your important metrics and data.",
+    "metrics": {
+      "totalUsers": "Total Users",
+      "revenue": "Revenue",
+      "orders": "Orders",
+      "conversion": "Conversion",
+      "fromLastMonth": "from last month"
+    },
+    "charts": {
+      "securityEvents": "Security Events",
+      "maturityIndex": "Maturity Index",
+      "fungalThreat": "Fungal Threat",
+      "canopyGrading": "Canopy Grading",
+      "treeAge": "Tree Age",
+      "treeDensity": "Tree Density",
+      "selectChart": "Select chart",
+      "chartPlaceholder": "Chart placeholder",
+      "securityVisualization": "Monitoring of security events and critical alerts in the plantation",
+      "maturityVisualization": "Analysis of cocoa fruit maturity index by region",
+      "fungalVisualization": "Detection and monitoring of fungal threats in crops",
+      "canopyVisualization": "Assessment and grading of forest canopy coverage",
+      "treeAgeVisualization": "Distribution of cocoa tree ages across the plantation",
+      "treeDensityVisualization": "Analysis of tree density and distribution per area"
+    },
+    "treeMap": {
+      "title": "Tree Distribution Map",
+      "description": "Visualization showing {chartType} across all tree locations",
+      "securityEventsDescription": "security events",
+      "valuesDescription": "{chartType} values",
+      "trails": "Trails",
+      "connections": "Connections",
+      "dataDensity": "Data density",
+      "auto": "Auto",
+      "high": "High",
+      "low": "Low",
+      "selectLots": "Select Lots",
+      "deselectAll": "Deselect All",
+      "selectAll": "Select All",
+      "lot": "Lot",
+      "showing": "Showing",
+      "of": "of",
+      "lotsShort": "lots",
+      "trees": "trees",
+      "trailPoints": "trail points",
+      "sampling": "Sampling",
+      "hideLegend": "Hide legend",
+      "showLegend": "Show legend",
+      "trailConnection": "Trail Connection",
+      "trailPoint": "Trail Point",
+      "shown": "shown",
+      "legend": {
+        "title": "Legend",
+        "trees": "Trees:",
+        "trails": "Trails:",
+        "connections": "Connections:",
+        "securityEvent": "Security Event",
+        "noEvents": "No Events",
+        "low": "Low",
+        "medium": "Medium",
+        "high": "High",
+        "main": "Main",
+        "secondary": "Secondary",
+        "access": "Access",
+        "trailLinks": "Trail Links"
+      },
+      "stats": {
+        "trees": "Trees",
+        "trailPoints": "Trail Points",
+        "connections": "Connections",
+        "securityEvents": "Security Events",
+        "avgValue": "Avg Value",
+        "areaCovered": "Area Covered"
+      },
+      "tooltip": {
+        "treeId": "Tree ID",
+        "trailPoint": "Trail Point",
+        "lot": "Lot",
+        "coordinates": "Coordinates",
+        "treeMetrics": "--- Tree Metrics ---",
+        "maturityIndex": "Maturity Index",
+        "securityEvents": "Security Events",
+        "fungalThreat": "Fungal Threat",
+        "canopyGrading": "Canopy Grading",
+        "treeAge": "Tree Age",
+        "treeDensity": "Tree Density",
+        "currentView": "--- Current View ---",
+        "showing": "Showing",
+        "currentValue": "Current Value",
+        "type": "Type",
+        "surface": "Surface",
+        "width": "Width",
+        "difficulty": "Difficulty",
+        "years": "years"
+      },
+      "loading": "Loading tree data...",
+      "error": "Error loading tree data",
+      "noData": "No network data available",
+      "clickToToggle": "Left-click to select only",
+      "shiftClickToSelectOnly": "Right-click to toggle",
+      "rightClickToSelectOnly": "Click to select only"
+    },
+    "activity": {
+      "title": "Recent Activity",
+      "newUser": "New user registered",
+      "orderCompleted": "Order completed",
+      "maintenance": "System maintenance scheduled",
+      "paymentFailed": "Payment failed",
+      "minutesAgo": "minutes ago",
+      "hourAgo": "hour ago",
+      "hoursAgo": "hours ago",
+      "tomorrow": "Tomorrow at",
+      "order": "Order"
+    }
+  },
+  "profile": {
+    "title": "My Account",
+    "subtitle": "User"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "warning": "Warning",
+    "info": "Information",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "search": "Search",
+    "filter": "Filter",
+    "export": "Export",
+    "import": "Import"
+  }
+}
+
