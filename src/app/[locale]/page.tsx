@@ -38,7 +38,7 @@ export default async function Home({ params }: Props) {
   let data: NetworkData | null = null;
   
   try {
-    const filePath = path.join(process.cwd(), 'public', 'tree_coordinates_with_trails.json');
+    const filePath = path.join(process.cwd(), 'public', 'plantation-data.json');
     const jsonData = await fs.readFile(filePath, 'utf-8');
     data = JSON.parse(jsonData);
   } catch (error) {

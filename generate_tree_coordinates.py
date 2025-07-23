@@ -407,7 +407,7 @@ def main():
         combined_data["connections"].extend(lot["connections"])
     
     # Save to JSON file
-    with open('tree_coordinates_with_trails.json', 'w') as f:
+    with open('public/plantation-data.json', 'w') as f:
         json.dump(combined_data, f, indent=2)
     
     print("\n" + "=" * 50)
@@ -416,7 +416,7 @@ def main():
     print(f"  - {total_trail_points} total trail points")
     print(f"  - {total_connections} total connections")
     print(f"  - {total_trees + total_trail_points} total points")
-    print(f"Saved to: tree_coordinates_with_trails.json")
+    print(f"Saved to: public/plantation-data.json")
     print(f"Total area covered: {len(all_lots)} hectares")
     print("\nLot centers:")
     for i, center in enumerate(lot_centers, 1):

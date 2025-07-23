@@ -28,7 +28,7 @@
   "home": {
     "title": "Welcome to Theobroma Digital",
     "subtitle": "Smart monitoring system for cocoa plantations",
-    "dataError": "Error loading plantation data. Please check if the tree_coordinates_with_trails.json file exists.",
+    "dataError": "Error loading plantation data. Please check if the plantation-data.json file exists.",
     "insights": {
       "totalLots": "Total Lots",
       "totalTrees": "Total Trees",

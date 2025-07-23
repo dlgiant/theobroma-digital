@@ -28,7 +28,7 @@
   "home": {
     "title": "Bem-vindo ao Theobroma Digital",
     "subtitle": "Sistema inteligente de monitoramento para plantações de cacau",
-    "dataError": "Erro ao carregar dados da plantação. Verifique se o arquivo tree_coordinates_with_trails.json existe.",
+    "dataError": "Erro ao carregar dados da plantação. Verifique se o arquivo plantation-data.json existe.",
     "insights": {
       "totalLots": "Total de Lotes",
       "totalTrees": "Total de Árvores",

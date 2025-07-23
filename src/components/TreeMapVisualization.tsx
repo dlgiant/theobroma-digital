@@ -192,7 +192,7 @@ export default function TreeMapVisualization({ chartType }: TreeMapVisualization
     const loadNetworkData = async () => {
       try {
         setLoading(true);
-        const response = await fetch('/tree_coordinates_with_trails.json');
+        const response = await fetch('/plantation-data.json');
         if (!response.ok) {
           throw new Error('Failed to load network data');
         }
