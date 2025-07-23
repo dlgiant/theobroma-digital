@@ -324,7 +324,7 @@ def validate_lot_spacing(lot_centers, min_separation=150):
     return violations
 
 def main():
-    lot_total = round(random.uniform(10, 100))
+    lot_total = round(random.uniform(2, 20))
     min_separation = 98.0  # Minimum distance between lot centers in meters (2m overlap between lots)
     print(f"Generating {lot_total} separate cocoa plantation lots...")
     print(f"Minimum lot separation: {min_separation}m")
