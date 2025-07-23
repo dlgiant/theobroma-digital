@@ -73,6 +73,7 @@ jobs:
       - name: Build application
         run: yarn build
         env:
+          BUILD_STATIC: 'true'
           API_BASE_URL: ${{ secrets.API_BASE_URL }}
 
       - name: Upload build artifacts
@@ -80,8 +81,7 @@ jobs:
         with:
           name: build-files
           path: |
-            .next/
-            public/
+            out/
             package.json
             next.config.ts
           retention-days: 1
@@ -117,7 +117,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
+          cache: 'yarn'
 
       - name: Download build artifacts
         uses: actions/download-artifact@v4
@@ -125,7 +125,7 @@ jobs:
           name: build-files
 
       - name: Install dependencies
-        run: npm ci --only=production
+        run: yarn install --frozen-lockfile --production=false
 
       # Docker deployment option
       - name: Set up Docker Buildx
