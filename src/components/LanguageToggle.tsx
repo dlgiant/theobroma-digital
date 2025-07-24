@@ -16,22 +16,22 @@ export default function LanguageToggle() {
     { code: 'en-US', label: t('english'), flag: '🇺🇸' },
   ];
 
-  console.log('Current locale detected:', locale);
   const currentLanguage = languages.find(lang => lang.code === locale);
-  console.log('Current language object:', currentLanguage);
 
   const handleLanguageChange = (newLocale: string) => {
-    console.log('Changing language from', locale, 'to', newLocale);
-    console.log('Current pathname:', pathname);
     
     if (newLocale === locale) {
       setShowDropdown(false);
       return;
     }
     
+    // Save locale preference for static exports
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('preferred-locale', newLocale);
+    }
+    
     // Replace the current locale in the pathname
     const newPathname = pathname.replace(`/${locale}`, `/${newLocale}`);
-    console.log('New pathname:', newPathname);
     
     setShowDropdown(false);
     
