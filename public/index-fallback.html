@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="refresh" content="1; url=/pt-BR/">
+    <meta http-equiv="refresh" content="1; url=/pt-BR/index.html">
     <title>Redirecionando... - Theobroma Digital</title>
     <meta name="description" content="Inteligência do Cacau">
     <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16">
@@ -61,7 +61,7 @@
             <div class="spinner"></div>
             <p class="text-primary">Redirecionando...</p>
             <p class="text-secondary">Se não for redirecionado automaticamente, 
-                <a href="/pt-BR/" class="link">clique aqui</a>.
+                <a href="/pt-BR/index.html" class="link">clique aqui</a>.
             </p>
         </div>
     </div>
@@ -70,11 +70,11 @@
         try {
             const savedLocale = localStorage.getItem('preferred-locale') || 'pt-BR';
             if (window.location.pathname === '/') {
-                window.location.replace('/' + savedLocale + '/');
+                window.location.replace('/' + savedLocale + '/index.html');
             }
         } catch(e) {
             // Fallback to pt-BR if localStorage fails
-            window.location.replace('/pt-BR/');
+            window.location.replace('/pt-BR/index.html');
         }
     </script>
 </body>
