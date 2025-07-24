@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="refresh" content="1; url=/pt-BR/">
+    <title>Redirecionando... - Theobroma Digital</title>
+    <meta name="description" content="Inteligência do Cacau">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16">
+    <style>
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .spinner {
+            width: 32px;
+            height: 32px;
+            border: 3px solid #e5e7eb;
+            border-top: 3px solid #10b981;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 16px;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, sans-serif;
+            background-color: #f9fafb;
+        }
+        .container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .content {
+            text-align: center;
+        }
+        .text-primary {
+            color: #6b7280;
+            margin: 0;
+            font-size: 16px;
+        }
+        .text-secondary {
+            color: #9ca3af;
+            margin: 8px 0 0;
+            font-size: 14px;
+        }
+        .link {
+            color: #10b981;
+            text-decoration: underline;
+        }
+        .link:hover {
+            color: #059669;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="spinner"></div>
+            <p class="text-primary">Redirecionando...</p>
+            <p class="text-secondary">Se não for redirecionado automaticamente, 
+                <a href="/pt-BR/" class="link">clique aqui</a>.
+            </p>
+        </div>
+    </div>
+    <script>
+        // Client-side fallback for better UX
+        try {
+            const savedLocale = localStorage.getItem('preferred-locale') || 'pt-BR';
+            if (window.location.pathname === '/') {
+                window.location.replace('/' + savedLocale + '/');
+            }
+        } catch(e) {
+            // Fallback to pt-BR if localStorage fails
+            window.location.replace('/pt-BR/');
+        }
+    </script>
+</body>
+</html>
