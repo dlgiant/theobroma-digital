@@ -8,6 +8,14 @@ interface LocaleLayoutProps {
   params: Promise<{ locale: string }>;
 }
 
+// Generate static params for all supported locales
+export async function generateStaticParams() {
+  return [
+    { locale: 'pt-BR' },
+    { locale: 'en-US' }
+  ];
+}
+
 export default async function LocaleLayout({
   children,
   params

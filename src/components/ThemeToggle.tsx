@@ -4,11 +4,7 @@ import { useTheme } from './ThemeProvider';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 
-interface ThemeToggleProps {
-  isCollapsed?: boolean;
-}
-
-export default function ThemeToggle({ isCollapsed = false }: ThemeToggleProps) {
+export default function ThemeToggle() {
   const { theme, actualTheme, setTheme } = useTheme();
   const t = useTranslations('theme');
   const [showDropdown, setShowDropdown] = useState(false);

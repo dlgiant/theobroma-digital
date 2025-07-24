@@ -14,6 +14,21 @@ interface TreeData {
   treeDensity: number;
 }
 
+interface TrailPoint {
+  id: string;
+  type: 'trail';
+  x: number;
+  y: number;
+  lat: number;
+  lng: number;
+}
+
+interface Connection {
+  from: string;
+  to: string;
+  distance: number;
+}
+
 interface NetworkData {
   metadata: {
     total_lots?: number;
@@ -23,8 +38,8 @@ interface NetworkData {
     total_area?: string;
   };
   trees: TreeData[];
-  trail_points: any[];
-  connections: any[];
+  trail_points: TrailPoint[];
+  connections: Connection[];
 }
 
 type Props = {

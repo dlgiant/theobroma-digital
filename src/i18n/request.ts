@@ -1,41 +1,38 @@
 import { getRequestConfig } from 'next-intl/server';
-import { headers } from 'next/headers';
 
 export const locales = ['pt-BR', 'en-US'] as const;
 export type Locale = (typeof locales)[number];
 
-export default getRequestConfig(async ({ locale, requestLocale }) => {
-  console.log('i18n config - received locale:', locale);
-  console.log('i18n config - requestLocale:', requestLocale);
+export default getRequestConfig(async ({ locale }) => {
+  const finalLocale: Locale = (locales.includes(locale as Locale)) ? locale as Locale : 'pt-BR';
   
-  // If locale is undefined, try to get it from the middleware header
-  if (!locale) {
-    const headersList = await headers();
-    const localeFromHeader = headersList.get('x-locale');
-    console.log('i18n config - locale from header:', localeFromHeader);
+  try {
+    // Import messages with error handling for static exports
+    const messages = (await import(`../../messages/${finalLocale}.json`)).default;
     
-    if (localeFromHeader && locales.includes(localeFromHeader as Locale)) {
-      locale = localeFromHeader;
-      console.log('i18n config - using locale from header:', locale);
-    } else if (requestLocale && locales.includes(requestLocale as Locale)) {
-      locale = requestLocale;
-      console.log('i18n config - using requestLocale:', locale);
-    } else {
-      locale = 'pt-BR';
-      console.log('i18n config - no valid locale found, using default pt-BR');
+    return {
+      locale: finalLocale,
+      messages
+    };
+  } catch (error) {
+    console.error('Failed to load messages for locale:', finalLocale, error);
+    
+    // Fallback to default locale messages
+    try {
+      const fallbackMessages = (await import(`../../messages/pt-BR.json`)).default;
+      
+      return {
+        locale: 'pt-BR',
+        messages: fallbackMessages
+      };
+    } catch (fallbackError) {
+      console.error('Failed to load fallback messages:', fallbackError);
+      
+      // Return empty messages as last resort
+      return {
+        locale: 'pt-BR',
+        messages: {}
+      };
     }
   }
-  
-  // Validate that the final `locale` parameter is valid
-  if (!locales.includes(locale as Locale)) {
-    console.log('i18n config - invalid locale, using default pt-BR');
-    locale = 'pt-BR';
-  }
-  
-  console.log('i18n config - using locale:', locale);
-  
-  return {
-    locale,
-    messages: (await import(`../../messages/${locale}.json`)).default
-  };
 });
