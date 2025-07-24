@@ -91,11 +91,11 @@ jobs:
         run: |
           echo "Current branch: ${{ github.ref }}"
           if [ "${{ github.ref }}" = "refs/heads/main" ]; then
-            MATRIX='{"include":[{"environment":"production","url":"https://d3p343dcol9cwr.cloudfront.net"}]}'
+            MATRIX='{"include":[{"environment":"production","url":"https://theobroma.digital","distribution_id":"E2DSBXW90SXIZB"}]}'
             echo "Setting production matrix: $MATRIX"
             echo "deployment-matrix=$MATRIX" >> $GITHUB_OUTPUT
           else
-            MATRIX='{"include":[{"environment":"staging","url":"https://d3p343dcol9cwr.cloudfront.net"}]}'
+            MATRIX='{"include":[{"environment":"staging","url":"https://staging.theobroma.digital","distribution_id":"E1YY1RHTK38321"}]}'
             echo "Setting staging matrix: $MATRIX"
             echo "deployment-matrix=$MATRIX" >> $GITHUB_OUTPUT
           fi
@@ -182,7 +182,7 @@ jobs:
         if: ${{ vars.DEPLOY_METHOD == 'aws' }}
         run: |
           aws s3 sync out/ s3://${{ secrets.S3_BUCKET_NAME }} --delete
-          aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
+          aws cloudfront create-invalidation --distribution-id ${{ matrix.distribution_id }} --paths "/*"
 
       # Vercel deployment option
       - name: Deploy to Vercel
