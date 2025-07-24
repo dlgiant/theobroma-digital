@@ -1,40 +1,15 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 
 export default function RootPage() {
-  const router = useRouter();
-
   useEffect(() => {
-    // Check if we're in a static export environment
-    const isStaticExport = typeof window !== 'undefined';
-    
-    if (isStaticExport) {
-      // Client-side locale detection and redirection
-      const detectLocale = () => {
-        // Check for saved locale preference
-        const savedLocale = localStorage.getItem('preferred-locale');
-        if (savedLocale && ['pt-BR', 'en-US'].includes(savedLocale)) {
-          return savedLocale;
-        }
-        
-        // Check browser language
-        const browserLocale = navigator.language;
-        if (browserLocale.startsWith('pt')) {
-          return 'pt-BR';
-        } else if (browserLocale.startsWith('en')) {
-          return 'en-US';
-        }
-        
-        // Default fallback
-        return 'pt-BR';
-      };
-      
-      const locale = detectLocale();
-      router.replace(`/${locale}`);
+    // Simple redirect for root page only
+    if (typeof window !== 'undefined' && window.location.pathname === '/') {
+      const savedLocale = localStorage.getItem('preferred-locale') || 'pt-BR';
+      window.location.replace(`/${savedLocale}`);
     }
-  }, [router]);
+  }, []);
 
   // Show loading state while redirecting
   return (

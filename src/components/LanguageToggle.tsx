@@ -35,8 +35,8 @@ export default function LanguageToggle() {
     
     setShowDropdown(false);
     
-    // Force navigation and refresh
-    window.location.href = newPathname;
+    // Use replace to avoid going through client-side routing
+    window.location.replace(newPathname);
   };
 
   return (
